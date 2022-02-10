@@ -1,4 +1,4 @@
-// Test Function: ILK650V
+// Test Function: ILK650V   ,  # lwait = delay 
 ETS_PRGFLOW_FUNC ILK650V( int DSIndex, LPCTSTR TestLabel )
 {
  //	int site,i;
