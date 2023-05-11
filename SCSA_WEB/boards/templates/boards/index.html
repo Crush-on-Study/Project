@@ -1,0 +1,131 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% comment %} <style>
+      body {
+        margin: 0;
+        height: 100%;
+        background-image: linear-gradient(to top, #78c7d2 0%, #efadeb 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        font: 600 16px/18px 'Open Sans', sans-serif;
+      }
+
+      .button_container {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 70%;
+      }
+
+      .logo {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 30%;
+      }
+
+      .logo {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 40px;
+        padding-top: 40px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+      }
+
+      .btn {
+        font-size: 25px;
+        border: none;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        font-size: 15px;
+        background-color: #222;
+        padding: 17px 60px;
+        margin: 0 auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+      }
+
+      .btn span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 490%;
+        width: 140%;
+        background: #ffffff 100%;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+        transform: translateX(-98%) translateY(-25%) rotate(45deg);
+      }
+
+      .btn:hover {
+        color: #222;
+      }
+
+      .btn:hover:after {
+        -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+        transform: translateX(-9%) translateY(-25%) rotate(45deg);
+      }
+
+      .link {
+        font-size: 20px;
+        margin-top: 30px;
+      }
+
+      .link a {
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+      }
+
+      .board_button {
+        display: flex;
+        padding: 20px 40px;
+        margin: 0;
+        border-radius: 5px;
+        position: absolute;
+        top: 5%;
+        transform: translateY(-50%);
+        left: 97%;
+        transform: translate(-50%, -50%);
+      }
+
+      .btn:hover {
+        color: #222;
+      }
+    </style> {% endcomment %}
+  </head>
+
+  <body>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <div class='logo'>
+      <img src="./static/logo.png" alt="my image" width="580" height="400">
+    </div>
+    <form action="{% url 'boards:start' %}" method="get">
+      <div class="button_container">
+        <button class="btn" type="submit">
+          <span>LOG IN</span></button>
+      </div>
+    </form>
+  </body>
+
+</html>
