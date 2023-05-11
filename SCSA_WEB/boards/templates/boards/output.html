@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      height: 100%;
+      background-image: linear-gradient(to top, #78c7d2 0%, #efadeb 100%);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+
+    #MaxFrame {
+      margin-top: 70px;
+      /* background-color: white; */
+      align-items: center;
+      width: 90%;
+      /* height: 60vh; */
+      margin: 5% auto;
+      display: flex;
+      /* justify-content: center; */
+      flex-wrap: wrap;
+      /* background-color: aqua; */
+    }
+
+    #MainResult {
+      margin-top: 70px;
+      /* background-color: white; */
+      align-items: center;
+      width: 50%;
+      /* height: 60vh; */
+      margin: 5% auto;
+      display: flex;
+      /* justify-content: center; */
+      flex-wrap: wrap;
+    }
+
+    #ResultContent {
+      margin-top: 100px;
+      /* background-color: black; */
+      width: 100%;
+      height: 200px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    #ResultPhrase {
+      color: white;
+      font-size: 120px;
+      text-shadow: 2px 2px 4px gray;
+    }
+
+    #ResultLine {
+      background-color: rgba(255, 255, 255, 0.42);
+      width: 100%;
+      height: 3px;
+      box-shadow: 2px 2px 4px gray;
+    }
+
+    #FirstContent {
+      /* margin-top: 100px;
+            background-color: black; */
+      width: 100%;
+      height: 200px;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    #FisrtPhrase {
+      color: white;
+      font-size: 70px;
+      text-shadow: black;
+      text-shadow: 2px 2px 4px gray;
+    }
+
+    #FirstPercent {
+      font-size: 70px;
+    }
+
+    #FirstLine {
+      background-color: aqua;
+      width: 100%;
+      height: 1px;
+    }
+
+    #Separation {
+      color: white;
+      margin: auto;
+      width: 50%;
+      height: 70px;
+      background-color: rgb(141, 140, 140);
+      border-radius: 50px;
+      text-align: center;
+      justify-content: center;
+    }
+
+    #SecondContent {
+      margin: 3% auto;
+      background-color: rgba(255, 255, 255, 0.498);
+      width: 100%;
+      height: 170px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    #SecondPhrase {
+      font-size: 25px;
+      justify-content: center;
+    }
+
+    #ThirdContent {
+      margin: 1% auto;
+      background-color: rgba(255, 255, 255, 0.498);
+      width: 100%;
+      height: 1200px;
+      border-radius: 10px;
+    }
+
+    #PetitionEx {
+      margin: auto;
+      width: 90%;
+      height: 100%;
+      /* background-color: aqua; */
+    }
+
+    #SmallTitle {
+      padding: 5px;
+      color: rgb(132, 132, 132);
+      text-align: center;
+      font-size: 15px;
+      align-items: center;
+    }
+
+    #ThirdPhrase1 {
+      padding: 5%;
+      text-align: center;
+      font-size: 25px;
+      justify-content: center;
+    }
+
+    #MainContents1 {
+      /* background-color: white; */
+      margin: 10px auto;
+      width: 91%;
+      height: 60%;
+      text-align: justify;
+      padding: 10 px;
+      /* border-radius: 50px; */
+    }
+
+    #Phrase1 {
+      line-height: 200%;
+      color: rgb(32, 32, 32);
+      font-size: 17px;
+    }
+
+    .buttonarea {
+      margin-top: 10px;
+      text-align: center;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 20px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    button {
+      margin: 0 5px;
+    }
+
+    .button-return {
+      border-color: #ffffff;
+      color: rgb(135, 135, 135);
+      padding: 10px 20px;
+      width: 120px;
+      background: #ffffff;
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+    }
+
+    .button-board {
+      border-color: rgb(135, 135, 135);
+      color: white;
+      padding: 10px 20px;
+      width: 120px;
+      background: rgb(135, 135, 135);
+      font-size: 15px;
+      display: flex;
+      justify-content: center;
+      border-radius: 50px;
+    }
+  </style>
+
+  <body>
+    <div id="MaxFrame">
+      <form action="{% url 'boards:returntoregister' %}" method="get">
+        <div class='buttonarea'>
+          <button class="button-return">
+            <span>Return</span></button>
+          <!-- <button class="button-board"><span>Board</span></button> -->
+        </div>
+      </form>
+      <div id="ResultContent">
+        <h1 id="ResultPhrase">RESULT</h1>
+      </div>
+      <div id="FirstContent">
+        <h1 id="FisrtPhrase">
+          제출하신 청원이 승인될 확률은
+          <b id="FirstPercent">{{result.score}}%</b>
+          입니다</h1>
+
+      </div>
+      <div id="ResultLine"></div>
+
+      <div id="MainResult">
+        <div id="Separation">
+          <h2>{{ouput.s_categoryname}}
+            분야에 관한 정보</h2>
+        </div>
+
+        <div id="SecondContent">
+          <p id="SmallTitle">수치 정보</p>
+          <div id="SecondPhrase">
+            <p>
+              <b>추천수 TOP 동의
+                {{ouput.s_like}}개 | 추천수 평균 동의
+                {{ouput.s_mean}}개</b>
+            </p>
+          </div>
+        </div>
+
+        <div id="ThirdContent">
+          <p id="SmallTitle">가장 많은 채택을 받은 청원</p>
+          <div id="PetitionEx">
+            <div id="ThirdTitle">
+              <p id="ThirdPhrase1">
+                <b>{{ouput.s_title}}</b>
+              </p>
+            </div>
+            <div id="MainContents1">
+              <p id="Phrase1">{{ouput.s_content}}</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
