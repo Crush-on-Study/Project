@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+
+      body {
+        margin: 0;
+        height: 100%;
+        background-image: linear-gradient(to top, #78c7d2 0%, #efadeb 100%);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .label {
+        color: rgb(59, 58, 58);
+        font-size: 25px;
+      }
+
+      .InputBox {
+        margin: 100px auto;
+        padding: 2%;
+        width: 30vw;
+        height: 60vh;
+        background-color: rgb(255, 255, 255, 0.7);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+        border: 1px solid rgb(250, 249, 249);
+        border-radius: 2em;
+        color: rgb(59, 58, 58);
+      }
+
+      .InputTitle {
+        font-size: 18px;
+        background-color: #fff;
+        outline-color: #efadeb;
+        border: none;
+        padding-bottom: 0.9rem;
+        padding-top: 0.9rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .Selection {
+        color: gray;
+        font-size: 18px;
+        background-color: #fff;
+        outline-color: #efadeb;
+        border: none;
+        padding-bottom: 0.9rem;
+        padding-top: 0.9rem;
+        margin: 0.5rem 0;
+        width: 100.5%;
+        border-radius: 5px;
+      }
+
+      textarea {
+        resize: none;
+        border: white 2px solid;
+        outline-color: rgb(239, 178, 234);
+      }
+
+      #Writer {
+        background-color: #fff;
+        font-size: 18px;
+        border: none;
+        padding-bottom: 0.9rem;
+        padding-top: 0.9rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        border-radius: 5px;
+      }
+
+      .btn {
+        font-size: 25px;
+        border: none;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        text-transform: uppercase;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        color: rgb(255, 255, 255);
+        font-weight: 700;
+        font-size: 15px;
+        background-color: #7d7d7d;
+        padding: 17px 60px;
+        margin: 0 auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.20);
+      }
+
+      .btn span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 490%;
+        width: 140%;
+        background: #ffffff 100%;
+        -webkit-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+        -webkit-transform: translateX(-98%) translateY(-25%) rotate(45deg);
+        transform: translateX(-98%) translateY(-25%) rotate(45deg);
+      }
+
+      .btn:hover {
+        color: rgb(255, 255, 255);
+      }
+
+      .btn:hover:after {
+        -webkit-transform: translateX(-9%) translateY(-25%) rotate(45deg);
+        transform: translateX(-9%) translateY(-25%) rotate(45deg);
+      }
+
+      .link {
+        font-size: 20px;
+        margin-top: 30px;
+      }
+
+      .link a {
+        color: rgb(0, 0, 0);
+        font-size: 25px;
+      }
+
+      .board_button {
+        display: flex;
+        padding: 20px 40px;
+        margin: 0;
+        border-radius: 5px;
+        position: absolute;
+        top: 5%;
+        transform: translateY(-50%);
+        left: 97%;
+        transform: translate(-50%, -50%);
+      }
+
+      .btn:hover {
+        color: #7d7d7d;
+      }
+    </style>
+  </head>
+
+  <body>
+    
+    <div class="InputBox">
+      <h1 id="Theme">내 청원 알아보기</h1>
+      <hr id="line">
+      <br>
+      <!-- <label class="label" for="date">DATE</label> -->
+      <!-- <input type="date" placeholder="DATE" class="InputDate"> -->
+      <!-- <label class="label" for="category">카테고리</label> &nbsp;&nbsp; -->
+      <form action="{% url 'boards:texttodb' %}" method="post">
+        {% if write_failed %}
+          <p class="error-message" style="text-align:center; font-weight:bold; font-size:18px; color:red;">내용을 입력하세요.</p>
+        {% endif %}
+        {% csrf_token %}
+        <select id="category" class="Selection" name="category">
+          <option value="none">▽ 카테고리 목록 ▽</option>
+          <option value="cat1">정치|선거|국회운영</option>
+          <option value="cat2">수사|법무|사법제도</option>
+          <option value="cat3">재정|세제|금융|예산</option>
+          <option value="cat4">소비자|공정거래</option>
+          <option value="cat5">교육</option>
+          <option value="cat6">과학기술|정보통신</option>
+          <option value="cat7">외교|통일|국방|안보</option>
+          <option value="cat8">재난|안전|환경</option>
+          <option value="cat9">행정|지방자치</option>
+          <option value="cat10">문화|체육|관광|언론</option>
+          <option value="cat11">농업|임업|수산업|축산업</option>
+          <option value="cat12">산업|통상</option>
+          <option value="cat13">보건의료</option>
+          <option value="cat14">복지|보훈</option>
+          <option value="cat15">국토|해양|교통</option>
+          <option value="cat16">인권|성평등|노동</option>
+          <option value="cat17">저출산|고령화|아동|청소년|가족</option>
+          <option value="cat18">기타</option>
+        </select>
+        <input type="text" placeholder="TITLE" class="InputTitle" name='title'>
+        <textarea id="Writer" cols="40" rows="20" placeholder="청원 내용을 입력하세요" name='content'></textarea>
+        
+      </div>
+      <div class="button_container">
+        
+        <button class="btn" type="submit">
+          <span>결과확인</span></button>
+          
+        <!-- <button class="btn" onclick="location.href='output.html'"><span>결과확인</span></button> -->
+        
+      </form>
+      
+    </div>
+
+    
+  </body>
+</html>
