@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        height: 100%;
+        background-image: linear-gradient(to top, #78c7d2 0%, #efadeb 100%);
+        font: 600 16px/18px 'Open Sans', sans-serif;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+      }
+
+      .sign-in {
+        text-align: center;
+        margin-bottom: 50px;
+        color: rgb(62, 63, 62);
+      }
+
+      .login-html {
+        margin: 250px auto;
+        width: 525px;
+        height: 400px;
+        padding: 90px 70px 50px;
+        background: rgba(254, 254, 254, 0.5);
+        box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+      }
+
+      .group {
+        margin-bottom: 15px;
+      }
+
+      .input {
+        width: 90%;
+        color: rgb(135, 135, 135);
+        display: block;
+        margin: auto;
+        border: none;
+        padding: 15px 20px;
+        border-radius: 25px;
+        background: rgba(253, 253, 253, 0.322);
+      }
+
+      label {
+        color: rgb(131, 131, 131);
+        font-size: 12px;
+      }
+
+      .buttonarea1 {
+        margin-top: 30px;
+        text-align: center;
+        justify-content: space-between;
+        display:fl
+      }
+
+      .buttonarea2 {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .buttonarea-signup {
+        margin-top: 30px;
+        text-align: center;
+      }
+
+      .button-signin {
+        border-color: #fcb0f0;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        width: 25%;
+        background: #fcb0f0;
+      }
+
+      .button-signup {
+        border-color: rgb(135, 135, 135);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        width: 25%;
+        background: rgb(135, 135, 135);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="login-wrap">
+      <div class="login-html">
+        <h1 class="sign-in">SIGN IN</h1>
+        <p></p>
+        <div class="login-form">
+          <!-- existing login form code -->
+          {% if login_failed %}
+          <p class="error-message">로그인에 실패하였습니다. 다시 시도해주세요.</p>
+          {% endif %}
+          <div class="sign-in-htm">
+            <form action="{% url 'boards:tologin' %}" method="post">
+              {% csrf_token %}
+              <div class="group">
+                <label for="user" class="label">USERNAME</label><br>
+                <input id="user" type="text" class="input" name='username'>
+              </div>
+              <div class="group">
+                <label for="pass" class="label">PASSWORD</label><br>
+                <input id="pass" type="password" class="input" data-type="password" name='password'>
+              </div>
+              <div class="group">
+                <div class="buttonarea1">
+                  <button class="button-signin" type="submit">
+                    <span>SIGN IN</span></button>
+                </div>
+              </form>
+              <div class="buttonarea2">
+                <form action="{% url 'boards:gotosignup' %}" method="get">
+                  <button class="button-signup" type="submit">
+                    <span>SIGN UP</span></button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </body>
+
+  </html>
